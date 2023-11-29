@@ -6,8 +6,11 @@ import java.util.Map;
 
 import com.uts.jwp.domain.Courses;
 
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +31,7 @@ public class CoursesController {
     }
 
     @PostMapping("/courses")
-    public ResponseEntity<String> addCourses(@RequestBody Courses courses) {
+    public ResponseEntity<String> addCourses(@Valid @RequestBody Courses courses) {
         coursesMap.put(courses.getCourseCode(), courses);
         Courses savedCourses = coursesMap.get(courses.getCourseCode());
         return new ResponseEntity<>("Courses with Code: " + savedCourses.getCourseCode() +
