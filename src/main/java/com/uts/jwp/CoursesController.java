@@ -99,90 +99,6 @@ public class CoursesController {
         return courseMap.values().stream().toList();
     }
 
-    // @PostMapping("/courses")
-    // public String addCourse(@Valid Courses courses, BindingResult bindingResult, Model model) {
-
-    //     String errorCourseCode = validateCourseCode(courses);
-    //     String errorCourseName = validateCourseName(courses);
-    //     String errorTotSKS = validateTotSKS(courses);
-    //     String errorFaculty = validateFaculty(courses);
-
-    //     if (errorCourseCode != null || errorCourseName != null || errorTotSKS != null || errorFaculty != null) {
-    //         ObjectError error = new ObjectError("globalError", errorCourseCode != null ? errorCourseCode : errorCourseName != null ? errorCourseName : errorTotSKS != null ? errorTotSKS : errorFaculty != null ? errorFaculty : null);
-    //         bindingResult.addError(error);
-    //     }
-
-    //     if (bindingResult.hasErrors()) {
-    //         return "add-courses";
-    //     }
-
-    //     String courseCode = courses.getCourseCode();
-    //     boolean exists = courseMap.values().stream()
-    //             .anyMatch(data -> courseCode.equals(data.getCourseCode()));
-
-    //     if (exists) {
-    //         throw new IllegalArgumentException("courses with courses code: " + courseCode + " is already exist");
-    //     }
-    //     courseMap.put(courseCode, courses);
-    //     model.addAttribute("courses", fetchCourses());
-    //     return "index";
-    // }
-
-    // private String validateCourseCode(Courses courses) {
-    //     String errString = null;
-    //     if (courses.getCourseCode() != null) {
-    //         if (courses.getCourseCode().isBlank()) {
-    //             errString = "course code is required";
-    //         } else if (!courses.getCourseCode().matches("^PG.*")) {
-    //             errString = "Course code must begin with 'PG'";
-    //         }
-    //     }
-    //     return errString;
-    // }
-
-    // private String validateCourseName(Courses courses) {
-    //     String errString = null;
-    //     if (courses.getCourseName() != null) {
-    //         if (courses.getCourseName().isBlank()) {
-    //             errString = "course name should not be blank";
-    //         } else if (courses.getCourseName().length() < 5 || courses.getCourseName().length() > 10) {
-    //             errString = "course name should have a length between 5 and 10 characters";
-    //         }
-    //     }
-    //     return errString;
-    // }
-
-    // private String validateTotSKS(Courses courses) {
-    //     String errString = null;
-    //     if (courses.getTotSKS() == null) {
-    //         errString = "totSKS should not be null";
-    //     } else if (courses.getTotSKS() < 1 || courses.getTotSKS() > 3) {
-    //         errString = "totSKS should be between 1 and 3";
-    //     }
-    //     return errString;
-    // }
-
-    // private String validateFaculty(Courses courses) {
-    //     String errString = null;
-    //     if (courses.getFaculty() != null) {
-    //         if (courses.getFaculty().isBlank()) {
-    //             errString = "faculty should not be blank";
-    //         } else if (!courses.getFaculty().matches("^(FE|FTI|FT)$")) {
-    //             errString = "Faculty must be one of (FE, FTI, FT)";
-    //         }
-    //     }
-    //     return errString;
-    // }
-
-    // @GetMapping(value = "/courses/{courseCode}")
-    // public ResponseEntity<Courses> findCourse(@PathVariable("courseCode") String courseCode) {
-    //     final Courses courses = courseMap.get(courseCode);
-    //     return new ResponseEntity<>(courses, HttpStatus.OK);
-    // }
-
-    // private static List<Courses> fetchCourses() {
-    //     return courseMap.values().stream().toList();
-    // }
 
     @PostMapping(value = "/courses/{courseCode}")
     public String updateCourse(@PathVariable("courseCode") String courseCode,
@@ -207,23 +123,6 @@ public class CoursesController {
         model.addAttribute("courses", fetchCourses());
         return "redirect:/courses";
     }
-
-    // @PostMapping(value = "/courses/{courseCode}")
-    // public String updateCourse(@Valid @PathVariable("courseCode") String courseCode,
-    //         Courses courses,
-    //         BindingResult result, Model model) {
-    //     final Courses coursesToBeUpdated = courseMap.get(courseCode);
-    //     coursesToBeUpdated.setCourseCode(courses.getCourseCode());
-    //     coursesToBeUpdated.setCourseName(courses.getCourseName());
-    //     coursesToBeUpdated.setTotSKS(courses.getTotSKS());
-    //     coursesToBeUpdated.setFaculty(courses.getFaculty());
-	// 	courseMap.put(courses.getCourseCode(), coursesToBeUpdated);
-
-	// 	model.addAttribute("courses", fetchCourses());
-	// 	return "redirect:/courses";
-	// }
-
-
 
 
 	@GetMapping("/edit/{courseCode}")
