@@ -19,7 +19,7 @@ public class Courses {
     @NotNull(message = "TotSKS is required")
     @Min(value = 1, message = "Minimal 1 SKS")
     @Max(value = 3, message = "Maximal 3 SKS")
-    private int totSKS;
+    private Integer totSKS;
 
     @NotBlank(message = "faculty is required")
     @Pattern(regexp = "^(FE|FTI|FT)$", message = ("Faculty must be one of (FE, FTI, FT)"))
@@ -45,13 +45,6 @@ public class Courses {
         this.courseName = courseName;
     }
 
-    public int getTotSKS() {
-        return totSKS;
-    }
-
-    public void setTotSKS(int totSKS) {
-        this.totSKS = totSKS;
-    }
 
     public String getFaculty() {
         return faculty;
@@ -61,9 +54,21 @@ public class Courses {
         this.faculty = faculty;
     }
 
-    
+    public Integer getTotSKS() {
+        return totSKS;
+    }
+
+    public void setTotSKS(Integer totSKS) {
+        this.totSKS = totSKS;
+    }
 
     
+
+
+    
+
+
+
 
     
 

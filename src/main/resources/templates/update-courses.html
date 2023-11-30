@@ -1,0 +1,23 @@
+<form action="#" th:action="@{/courses/{courseCode}(courseCode=${courses.courseCode})}" th:object="${courses}" method="post">
+    <table>
+      <tr>
+        <td><label for="courseCode">Course Code</label></td>
+        <td> <input type="text" th:field="*{courseCode}" id="courseCode" placeholder="courseCode" readonly></td>
+      </tr>
+      <tr>
+        <td><label for="courseName">Course Name</label></td>
+        <td><input type="text" th:field="*{courseName}" id="courseName" placeholder="courseName"></td>
+      </tr>
+      <tr>
+        <td><label for="TotSKS">TotSKS</label></td>
+        <td><input type="text" th:field="*{totSKS}" id="totSKS"></td>
+      </tr>
+      <tr>
+        <td> <label for="faculty">faculty</label></td>
+        <td> <input type="text" th:field="*{faculty}" id="faculty" placeholder="Faculty"></td>
+      </tr>
+      <tr>
+        <td> <input type="submit" value="Update student"> </td>
+      </tr>
+    </table>
+  </form>

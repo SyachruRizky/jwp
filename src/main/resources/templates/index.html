@@ -1,0 +1,28 @@
+<div th:switch="${courses}">
+    <div th:case="*">
+        <h2>Courses of Budi Luhur University</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course name</th>
+                    <th>TotSKS</th>
+                    <th>Faculty</th>
+                    <th>edit</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="courses: ${courses}">
+                <td th:text="${courses.courseCode}"></td>
+                <td th:text="${courses.courseName}"></td>
+                <td th:text="${courses.totSKS}"></td>
+                <td th:text="${courses.faculty}"></td>
+                <td><a th:href="@{/edit/{courseCode}(courseCode=${courses.courseCode})}">Edit</a></td>
+                <td><a th:href="@{/courses/{courseCode}/delete (courseCode=${courses.courseCode})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>      
+<p><a href="/signup">Add a new Courses</a></p>
+</div>

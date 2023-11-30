@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Student Web</title>
+    <link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<form action="#" th:action="@{/courses}" th:object="${courses}" method="post">
+    <table>
+        <tr>
+            <td> <label for="courseCode">courseCode</label></td>
+            <td> <input type="text" th:field="*{courseCode}" id="courseCode" placeholder="courseCode"></td>
+            <td th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}" class="error"></td>
+        </tr>
+        <tr>
+            <td> <label for="courseName">Course name</label></td>
+            <td> <input type="text" th:field="*{courseName}" id="courseName" placeholder="courseName"></td>
+            <td th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}" class="error"></td>
+
+        </tr>
+        <tr>
+            <td> <label for="totSKS">TotSKS</label></td>
+            <td> <input type="text" th:field="*{totSKS}" id="totSKS" placeholder="totSKS"></td>
+            <td th:if="${#fields.hasErrors('totSKS')}" th:errors="*{totSKS}" class="error"></td>
+
+        </tr>
+        <tr>
+            <td> <label for="faculty">Faculty</label></td>
+            <td> <input type="text" th:field="*{faculty}" id="faculty" placeholder="faculty"></td>
+            <td th:if="${#fields.hasErrors('faculty')}" th:errors="*{faculty}" class="error"></td>
+
+        </tr>
+        <tr>
+            <td> <input type="submit" value="Add Course"></td>
+
+        </tr>
+        <tr>
+            <div th:if="${#fields.hasErrors('global')}">
+                <h3>errors:</h3>
+                <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+            </div>
+        </tr>
+
+    </table>
+
+
+</form>
